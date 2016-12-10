@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Blogs</title>
+</head>
+<body>
+Welcome {{ user }}
+{% for line in data %}
+    <h1>{{ line.title }}</h1>
+    <p>{{ line.body }}</p>
+{% endfor %}
+</body>
+</html>
