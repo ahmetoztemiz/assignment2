@@ -5,10 +5,38 @@
     <title>All Blogs</title>
 </head>
 <body>
-Welcome {{ user }}
-{% for line in data %}
-    <h1>{{ line.title }}</h1>
-    <p>{{ line.body }}</p>
-{% endfor %}
+
+{% if request.user.username %}
+    <h1 style="color: blue;">Welcome {{ request.user.username }}</h1>
+    <a href="/users/logout">Logout</a>
+{% endif %}
+
+<ol>
+    {% for blog in blogs %}
+        <li>
+            <h1 style="color: darkolivegreen">{{ blog.title }}</h1>
+            <p style="color: darkgreen">{{ blog.body }}</p>
+            {% for tag in blog.tags.all %}
+                {{ tag.name }}
+            {% endfor  %}
+        </li>
+    {% endfor %}
+</ol>
+
+
+<form method="POST">
+    {% csrf_token %}
+    <p style="color: darkslategray">Title: <input style="color: darkslategray" name="blog_title"></p>
+    <p style="color: darkslategray">Body: <input style="color: darkslategray" name="blog_body"></p>
+    <p style="color: darkslategray">Tags: <select style="color: darkslategray" name="tag_names" multiple>
+        {% for tag in tags %}
+            <option value="{{ tag.id }}" >{{ tag.name }}</option>
+        {% endfor %}</p>
+    </select>
+
+    <button type="submit">Submit</button>
+</form>
+
+
 </body>
 </html>

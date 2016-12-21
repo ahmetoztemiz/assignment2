@@ -19,11 +19,13 @@ from django.contrib import admin
 from todo import urls as todo
 from blog import urls as blog
 from users import urls as users
+from tags import urls as tags
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^todo/', include(todo)),
     url(r'^blog/', include(blog)),
-    url(r'^users/', include(users))
+    url(r'^users/', include(users)),
+    url(r'^tags/', include(tags))
 ]
