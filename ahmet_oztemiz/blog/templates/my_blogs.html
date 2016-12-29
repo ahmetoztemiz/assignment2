@@ -26,13 +26,7 @@
 
 <form method="POST">
     {% csrf_token %}
-    <p style="color: darkslategray">Title: <input style="color: darkslategray" name="blog_title"></p>
-    <p style="color: darkslategray">Body: <input style="color: darkslategray" name="blog_body"></p>
-    <p style="color: darkslategray">Tags: <select style="color: darkslategray" name="tag_names" multiple>
-        {% for tag in tags %}
-            <option value="{{ tag.id }}" >{{ tag.name }}</option>
-        {% endfor %}</p>
-    </select>
+    {{ form }}
 
     <button type="submit">Submit</button>
 </form>

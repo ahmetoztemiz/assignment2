@@ -5,4 +5,4 @@ from django import forms
 class BlogEntryForm(forms.ModelForm):
     class Meta:
         model = BlogEntry
-        fields = ("title", "body")
+        fields = ("title", "body", "tags")
