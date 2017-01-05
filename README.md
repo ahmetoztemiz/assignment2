@@ -1,2 +1,2 @@
-# software-assignment
-# https://github.com/ahmetoztemiz/software-assignment
+#software-assignment
+#https://github.com/ahmetoztemiz/assignment2.git
