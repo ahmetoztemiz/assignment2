@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import permission_required
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
 
@@ -36,3 +37,11 @@ def get_blog(request, blog_id):
         return render(request, "create_page.html", {"blog": blog})
     except BlogEntry.DoesNotExist:
         raise Http404("There is no result!")
+
+@permission_required('is_superuser')
+def show_all_user_blogs(request):
+    return render(request, "my_blogs.html", {"blogs": BlogEntry.objects.all()})
+
+@permission_required('is_superuser')
+def show_selected_user_blogs(request, userId):
+    return render(request, "my_blogs.html", {"blogs": BlogEntry.objects.filter(owner=userId)})
